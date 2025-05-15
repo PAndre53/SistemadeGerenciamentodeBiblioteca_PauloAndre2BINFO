@@ -20,4 +20,10 @@ public class Usuario {
    //SETTER
    public void setNome (String novoNome) {this.nome = novoNome;}
    public void setEmail (String novoEmail) {this.email = novoEmail;}
+   
+   //MÉTODO PARA EXIBIR AS INFORMAÇÕES DO USUÁRIO
+   public String exibirInformacoes(){
+       String info ="Id: "+id+", Usuario: "+nome+", Email: "+email;
+       return info;
+   }
 }
