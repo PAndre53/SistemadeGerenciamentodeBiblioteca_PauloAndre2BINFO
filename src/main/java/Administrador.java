@@ -3,8 +3,9 @@ public class Administrador extends Usuario {
     private String cargo;
         
     
-        public Administrador(String nome, String email) {
+        public Administrador(String nome, String email, String cargo) {
         super(nome, email);
+        this.cargo = cargo;
     }
     
     //GETTER

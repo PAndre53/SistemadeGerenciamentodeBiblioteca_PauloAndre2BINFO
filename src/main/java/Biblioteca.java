@@ -1,7 +1,8 @@
+
 import java.util.ArrayList;
 
- class Biblioteca {
-      //ATRIBUTOS
+public class Biblioteca {
+
     private ArrayList<Livro> livros;
     private ArrayList<Usuario> usuarios;
     private ArrayList<Administrador> administradores;
@@ -59,11 +60,53 @@ import java.util.ArrayList;
         
      Livro livro = new Livro(titulo, autor, ano);
      livros.add(livro);
-     return "livro "+titulo+ "cadastrado com sucesso.";
+     return "Livro "+titulo+" cadastrado com sucesso.";
     }
     
     //MÉTODO PARA CADASTRAR USUÁRIOS
+    public String cadastrarUsuario(String nome, String email){
+        Usuario usuario = new Usuario(nome, email);
+        usuarios.add(usuario);
+        return "Usuario "+nome+" foi cadastrado com sucesso.";
+    }
     
+    //MÉTODO PARA CADASTRAR ADMIN
+    public String cadastrarAdmin(String nome, String email, String cargo){
+        Administrador admin = new Administrador(nome, email, cargo);
+        administradores.add(admin);
+        return "Admin "+nome+" foi cadastrado com sucesso.";
+    }
+    
+    //MÉTODO PARA EMPRESTAR LIVRO
+    public void emprestarLivro(int isbn, int idUsuario){
+        for (Livro livro : livros) {
+            if(livro.getIsbn() == isbn) {
+                if (livro.getIsDisponivel() == true) {
+                    livro.setIsDisponivel(false);
+                    livro.setIdUsuarioEmprestadoPara (idUsuario);
+                    System.out.println("Livro emprestado com sucesso.");
+                   }else {
+                    System.out.println("Livro nao disponivel.");
+                }
+            }
+        }
+    }
+    
+    //MÉTODO PARA DEVOLVER LIVRO
+    public void devolverLivro(int isbn) {
+        for(Livro livro : livros) {
+            if (livro.getIsbn() == isbn) {
+                    if(livro.getIsDisponivel() == false);
+                    livro.setIsDisponivel(true);
+                    livro.setIdUsuarioEmprestadoPara (0);
+                    System.out.println("Livro devolvido com sucesso.");
+                   }else {
+                    System.out.println("Livro nao estava emprestado.");
+                }
+        }
+    }
+
+
     //MÉTODO PARA BUSCAR ADMINISTRADOR POR EMAIL
     public Administrador buscarAdministradorPorEmail(String email){
         for(Administrador administrador : administradores){
