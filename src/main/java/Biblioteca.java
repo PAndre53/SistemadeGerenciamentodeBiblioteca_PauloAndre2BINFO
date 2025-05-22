@@ -64,11 +64,10 @@ public class Biblioteca {
     }
     
     //MÉTODO PARA CADASTRAR USUÁRIOS
-    public String cadastrarUsuario(String nome, String email){
-        Usuario usuario = new Usuario(nome, email);
-        usuarios.add(usuario);
-        return "Usuario "+nome+" foi cadastrado com sucesso.";
-    }
+    public String cadastrarUsuario(Usuario usuario){
+    usuarios.add(usuario);
+    return "Usuario " + usuario.getNome() + " foi cadastrado com sucesso.";
+}
     
     //MÉTODO PARA CADASTRAR ADMIN
     public String cadastrarAdmin(String nome, String email, String cargo){
