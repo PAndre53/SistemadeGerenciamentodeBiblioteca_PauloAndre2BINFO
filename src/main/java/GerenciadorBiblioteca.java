@@ -72,10 +72,31 @@ public class GerenciadorBiblioteca {
     
                
                case 4 -> {
-                   
+                  System.out.print("Digite a senha de administrador: ");
+                  String senha = scanner.nextLine();
+                  if (senha.equals("admin")) {
+                  System.out.print("Digite o título do livro: ");
+                  String titulo = scanner.nextLine();
+                  System.out.print("Digite o autor do livro: ");
+                  String autor = scanner.nextLine();
+                  System.out.print("Digite o ano de publicação: ");
+                  int ano = scanner.nextInt();
+                  scanner.nextLine();
+                  String resultado = biblioteca.cadastrarLivro(titulo, autor, ano);
+                  System.out.println(resultado);
+                  } else {
+                  System.out.println("Senha incorreta. Acesso negado.");
+                    } 
                }
                case 5 -> {
-                   
+                   System.out.print("Digite o nome: ");
+                   String nome = scanner.nextLine();
+                   System.out.print("Digite o email: ");
+                   String email = scanner.nextLine();
+                   System.out.print("Digite o cargo: ");
+                   String cargo = scanner.nextLine();
+                   String resultado = biblioteca.cadastrarAdmin(nome, email, cargo);
+                   System.out.println(resultado);
                }
                case 6 -> {
                    System.out.println("Saindo...");
